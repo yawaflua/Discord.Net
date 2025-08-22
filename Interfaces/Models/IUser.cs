@@ -8,7 +8,7 @@ public interface IUser
     /// 	the user's id
     /// </summary>
     /// <seealso href="https://discord.com/developers/docs/resources/user#user-object">User-object</seealso>
-    public ulong Id { get; set; }
+    public string Id { get; set; }
     
     /// <summary>
     /// 	the user's username, not unique across the platform

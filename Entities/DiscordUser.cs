@@ -7,7 +7,7 @@ namespace yawaflua.Discord.Net.Entities;
 internal class DiscordUser : IUser
 {
     [JsonPropertyName("id")]
-    public ulong Id { get; set; }
+    public string Id { get; set; }
     
     [JsonPropertyName("username")]
     public string Username { get; set; }

@@ -6,4 +6,5 @@ public interface IDiscord
 {
     Task<IToken?> GetTokenAsync(string code);
     ISession? CreateSession();
+    string GetAuthorizationUrl(string state);
 }

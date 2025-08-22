@@ -7,15 +7,27 @@ namespace yawaflua.Discord.Net.Entities;
 
 internal class OAuthToken (HttpClient client, ulong ClientId, string ClientSecret) : IToken
 {
-    [JsonPropertyName("access_token")] public string AccessToken { get; set; }
+    public string AccessToken { get; set; }
 
-    [JsonPropertyName("expires_in")] public int ExpiresIn { get; set; }
+    public int ExpiresIn { get; set; }
 
-    [JsonPropertyName("refresh_token")] public string RefreshToken { get; set; }
+    public string RefreshToken { get; set; }
 
-    [JsonPropertyName("scope")] public string Scope { get; set; }
+    public string Scope { get; set; }
 
-    [JsonPropertyName("token_type")] public string TokenType { get; set; }
+    public string TokenType { get; set; }
+
+    public static OAuthToken FromDTO(TokenDto dto, HttpClient client, ulong ClientId, string ClientSecret)
+    {
+        return new(client, ClientId, ClientSecret)
+        {
+            AccessToken = dto.AccessToken,
+            ExpiresIn = dto.ExpiresIn,
+            RefreshToken = dto.RefreshToken,
+            Scope = dto.Scope,
+            TokenType = dto.TokenType
+        };
+    }
     public Task RevokeAsync(CancellationToken cancellationToken = default)
     {
         using var request = new HttpRequestMessage(HttpMethod.Post, "https://discord.com/api/oauth2/token/revoke")

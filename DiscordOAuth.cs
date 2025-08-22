@@ -103,10 +103,10 @@ public class DiscordOAuth : IDiscord
 
         var response = await _httpClient.PostAsync("https://discord.com/api/oauth2/token", content);
         var responseString = await response.Content.ReadAsStringAsync();
-        var authToken = JsonSerializer.Deserialize<OAuthToken>(responseString);
+        var authToken = JsonSerializer.Deserialize<TokenDto>(responseString);
         AccessToken = authToken?.AccessToken;
-        token = authToken;
-        return authToken;
+        token = OAuthToken.FromDTO(authToken, _httpClient, ClientId, ClientSecret);
+        return token;
     }
 
     public ISession CreateSession()
@@ -115,6 +115,27 @@ public class DiscordOAuth : IDiscord
             return new DiscordSession(token, _httpClient, Scopes, ClientId, ClientSecret, RedirectUri, Prompt);
         else 
             throw new InvalidOperationException("Token is not set. Please call GetTokenAsync first.");
+    }
+    
+    public string GetAuthorizationUrl(string state)
+    {
+
+        var uri = new UriBuilder("https://discord.com/api/oauth2/authorize?");
+        
+        var queryParameters = HttpUtility.ParseQueryString(uri.Query);
+        
+        queryParameters["client_id"] = ClientId.ToString();
+        queryParameters["redirect_uri"] = RedirectUri;
+        queryParameters["response_type"] = "code";
+        queryParameters["scope"] = Scopes.ToString();
+        queryParameters["state"] = state;
+        queryParameters["prompt"] = Prompt ? "consent" : "none";
+
+        return uri + string.Join("&", queryParameters.AllKeys
+            .SelectMany(key => queryParameters.GetValues(key)!
+                .Select(value => String.Format("{0}={1}", HttpUtility.UrlEncode(key), HttpUtility.UrlEncode(value))))
+            .ToArray());
+        
     }
 
     

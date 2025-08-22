@@ -70,28 +70,6 @@ internal class DiscordSession (IToken token, HttpClient httpClient, ScopesBuilde
         return await _req<DiscordConnection>("users/@me/connections");
     }
 
-    public string GetAuthorizationUrl(string state)
-    {
-
-        NameValueCollection query = new()
-        {
-            ["client_id"] = clientId.ToString(),
-            ["redirect_uri"] = redirectUri,
-            ["response_type"] = "code",
-            ["scope"] = scopes.ToString(),
-            ["state"] = state,
-            ["prompt"] = prompt ? "consent" : "none"
-        };
-
-        var uriBuilder = new UriBuilder("https://discord.com/api/oauth2/authorize")
-        {
-            Query = query.ToString()
-        };
-
-        return uriBuilder.ToString();
-        
-    }
-
     public IToken GetToken(CancellationToken cancellationToken = default)
     {
         if (token.AccessToken is null)

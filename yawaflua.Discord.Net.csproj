@@ -18,7 +18,7 @@
         <RepositoryType>GIT</RepositoryType>
         <PackageTags>Discord-OAuth2;Discord-OAuth-2;Discord-OAuth;DiscordOAuth;Discord;yawaflua;OAuth;OAuth-2;OAuth2</PackageTags>
         <Deterministic>true</Deterministic>
-        <Version>1.0.5</Version>
+        <Version>1.0.6</Version>
     </PropertyGroup>
 
     <ItemGroup>

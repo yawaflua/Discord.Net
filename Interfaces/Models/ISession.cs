@@ -9,8 +9,6 @@ public interface ISession
     
     Task<IConnection?> GetConnectionAsync(CancellationToken cancellationToken = default);
 
-
-    string GetAuthorizationUrl(string state);
     IToken GetToken(CancellationToken cancellationToken = default);
     
 }
