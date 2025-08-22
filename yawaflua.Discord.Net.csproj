@@ -1,28 +1,28 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Title>Discord OAuth2</Title>
-        <Authors>x3rt</Authors>
+        <Authors>yawaflua</Authors>
         <Description>Discord OAuth2 implementation for C#</Description>
-        <AssemblyName>x3rt.DiscordOAuth2</AssemblyName>
-        <RootNamespace>x3rt.DiscordOAuth2</RootNamespace>
+        <AssemblyName>yawaflua.Discord.Net</AssemblyName>
+        <RootNamespace>yawaflua.Discord.Net</RootNamespace>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageProjectUrl>httpsL//github.com/yawaflua/Discord.Net</PackageProjectUrl>
         <PUblishRepositoryUrl>true</PUblishRepositoryUrl>
-        <RepositoryUrl>https://github.com/x3rt/x3rt.DiscordOAuth2</RepositoryUrl>
+        <RepositoryUrl>https://github.com/yawaflua/Discord.Net</RepositoryUrl>
         <RepositoryType>GIT</RepositoryType>
-        <PackageTags>Discord-OAuth2;Discord-OAuth-2;Discord-OAuth;DiscordOAuth;Discord;OAuth;OAuth-2;OAuth2</PackageTags>
+        <PackageTags>Discord-OAuth2;Discord-OAuth-2;Discord-OAuth;DiscordOAuth;Discord;yawaflua;OAuth;OAuth-2;OAuth2</PackageTags>
         <Deterministic>true</Deterministic>
-        <Version>1.0.4</Version>
+        <Version>1.0.5</Version>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0"/>
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
     </ItemGroup>
 
     <ItemGroup>

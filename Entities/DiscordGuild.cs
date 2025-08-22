@@ -1,24 +1,45 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
+using yawaflua.Discord.Net.Entities.Enums;
+using yawaflua.Discord.Net.Interfaces.Models;
 
-namespace x3rt.DiscordOAuth2.Entities;
+namespace yawaflua.Discord.Net.Entities;
 
-public class DiscordGuild
+internal class DiscordGuild : IGuild
 {
-    [JsonProperty("id")] public ulong Id { get; set; }
+    [JsonPropertyName("id")] public ulong Id { get; set; }
 
-    [JsonProperty("name")] public string Name { get; set; }
+    [JsonPropertyName("name")] public string Name { get; set; }
 
-    [JsonProperty("icon")] public string? Icon { get; set; }
+    [JsonPropertyName("icon")] public string? IconHash { get; set; }
+    [JsonPropertyName("banner")] public string? BannerHash { get; set; }
 
-    [JsonProperty("owner")] public bool Owner { get; set; }
+    [JsonPropertyName("owner")] public bool IsOwner { get; set; }
 
-    [JsonProperty("permissions")] public string Permissions { get; set; }
+    [JsonPropertyName("permissions")] public string Permissions { get; set; }
 
-    [JsonProperty("features")] public GuildFeatures Features { get; set; }
+    [JsonPropertyName("features")] public IEnumerable<GuildFeature> Features { get; set; } = [];
+    
+    [JsonPropertyName("approximate_member_count")] public int ApproximateMemberCount { get; set; }
 
-    public override string ToString()
+    [JsonPropertyName("approximate_presence_count")] public int ApproximatePresenceCount { get; set; }
+    
+    public string GetIconUrl(int size = 128)
     {
-        return
-            $"Id: {Id}; Name: {Name}; Icon: {Icon}; Owner: {Owner}; Permissions: {Permissions}; Features: {Features}";
+        if (string.IsNullOrEmpty(IconHash))
+        {
+            return string.Empty;
+        }
+
+        return $"https://cdn.discordapp.com/icons/{Id}/{IconHash}.png?size={size}";
+    }
+
+    public string GetBannerUrl(int size = 128)
+    {
+        if (string.IsNullOrEmpty(BannerHash))
+        {
+            return string.Empty;
+        }
+
+        return $"https://cdn.discordapp.com/banners/{Id}/{BannerHash}.png?size={size}";
     }
 }

@@ -1,4 +1,4 @@
-namespace x3rt.DiscordOAuth2.Entities.Enums;
+namespace yawaflua.Discord.Net.Entities.Enums;
 
 public enum PremiumType
 {

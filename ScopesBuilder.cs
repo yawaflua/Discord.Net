@@ -1,6 +1,6 @@
-﻿using x3rt.DiscordOAuth2.Entities.Enums;
+﻿using yawaflua.Discord.Net.Entities.Enums;
 
-namespace x3rt.DiscordOAuth2;
+namespace yawaflua.Discord.Net;
 
 public class ScopesBuilder
 {
