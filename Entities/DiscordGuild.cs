@@ -6,7 +6,7 @@ namespace yawaflua.Discord.Net.Entities;
 
 internal class DiscordGuild : IGuild
 {
-    [JsonPropertyName("id")] public ulong Id { get; set; }
+    [JsonPropertyName("id")] public string Id { get; set; }
 
     [JsonPropertyName("name")] public string Name { get; set; }
 

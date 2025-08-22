@@ -31,7 +31,7 @@ internal class DiscordSession (IToken token, HttpClient httpClient, ScopesBuilde
         return await _req<DiscordGuild[]>("users/@me/guilds");
     }
 
-    public async Task<IGuildMember?> GetGuildMemberAsync(ulong guildId, CancellationToken cancellationToken = default)
+    public async Task<IGuildMember?> GetGuildMemberAsync(string guildId, CancellationToken cancellationToken = default)
     {
         if (token.AccessToken is null)
         {
@@ -41,7 +41,7 @@ internal class DiscordSession (IToken token, HttpClient httpClient, ScopesBuilde
         return await _req<DiscordGuildMember>($"users/@me/guilds/{guildId}/member");
     }
 
-    public async Task<IGuildMember?> AddMemberToGuildAsync(ulong guildId, ulong userId, CancellationToken cancellationToken = default)
+    public async Task<IGuildMember?> AddMemberToGuildAsync(string guildId, string userId, CancellationToken cancellationToken = default)
     {
         if (token.AccessToken is null)
         {

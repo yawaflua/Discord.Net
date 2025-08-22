@@ -8,5 +8,5 @@ internal class AvatarDecoration : IAvatarDecoration
     [JsonPropertyName("asset")]
     public string AssetHash { get; set; }
     [JsonPropertyName("sku_id")]
-    public ulong AssetArticular { get; set; }
+    public string AssetArticular { get; set; }
 }

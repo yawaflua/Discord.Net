@@ -4,7 +4,7 @@ namespace yawaflua.Discord.Net.Interfaces.Models;
 
 public interface IGuild
 {
-    public ulong Id { get; set; }
+    public string Id { get; set; }
     public string Name { get; set; }
     public string? IconHash { get; set; }
     public string? BannerHash { get; set; }

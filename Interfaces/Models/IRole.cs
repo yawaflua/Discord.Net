@@ -4,7 +4,7 @@ namespace yawaflua.Discord.Net.Interfaces.Models;
 
 public interface IRole
 {
-    public ulong Id { get; set; }
+    public string Id { get; set; }
     public string Name { get; set; }
     [Obsolete("Deprecated integer representation of hexadecimal color code")]
     public int Color { get; set; }

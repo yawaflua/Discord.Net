@@ -5,7 +5,7 @@ namespace yawaflua.Discord.Net.Entities;
 
 internal class DiscordRole : IRole
 {
-    public ulong Id { get; set; }
+    public string Id { get; set; }
     public string Name { get; set; }
     public int Color { get; set; }
     private RoleColor Colors { get; set; }

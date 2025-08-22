@@ -3,5 +3,5 @@
 public interface IAvatarDecoration
 {
     public string AssetHash { get; set; }
-    public ulong AssetArticular { get; set; }
+    public string AssetArticular { get; set; }
 }
